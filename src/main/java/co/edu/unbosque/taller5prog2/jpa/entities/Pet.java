@@ -1,10 +1,22 @@
 package co.edu.unbosque.taller5prog2.jpa.entities;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "pet")
+@Table(name = "Pet")
+@NamedQueries({
+        @NamedQuery(name = "Pet.update", query = "UPDATE Pet SET" +
+                " name = :name," +
+                " species = :species," +
+                " race = :race," +
+                " size = :size," +
+                " sex = :sex," +
+                " picture = :picture")
+})
 public class Pet {
     @Id
     @GeneratedValue
@@ -36,10 +48,12 @@ public class Pet {
     @JoinColumn(name = "username")
     private Owner owner;
 
-    @OneToMany(mappedBy = "pet", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<PetCase> petCases;
 
-    @OneToMany(mappedBy = "pet", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Visit> visits;
 
     public Pet() {}

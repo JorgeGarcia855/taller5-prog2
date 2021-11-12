@@ -1,17 +1,25 @@
 package co.edu.unbosque.taller5prog2.jpa.entities;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "owner")
-public class Owner {
-    @Id @Column(nullable = false)
-    private String username;
+@Table(name = "Owner")
+@PrimaryKeyJoinColumn
+@NamedQueries({
+        @NamedQuery(name = "Owner.update", query = "UPDATE Owner SET" +
+                " name = :name," +
+                " address = :address," +
+                " neighborhood = :neighborhood")
+})
+public class Owner extends UserApp {
 
     @Column(name = "person_id", unique = true, nullable = false)
     @GeneratedValue
-    private Integer personId;
+    private Long personId;
 
     @Column(nullable = false)
     private String name;
@@ -22,28 +30,25 @@ public class Owner {
     @Column(nullable = false)
     private String neighborhood;
 
-    @OneToOne
-    @JoinColumn(name = "username") @MapsId
-    private UserApp userApp;
-
-    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Pet> pets;
+
+    public Owner(String username, String password, String email, Long personId, String name, String address, String neighborhood) {
+        super(username, password, email, "owner");
+        this.personId = personId;
+        this.name = name;
+        this.address = address;
+        this.neighborhood = neighborhood;
+    }
 
     public Owner() {}
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Integer getPersonId() {
+    public Long getPersonId() {
         return personId;
     }
 
-    public void setPersonId(Integer personId) {
+    public void setPersonId(Long personId) {
         this.personId = personId;
     }
 
@@ -69,14 +74,6 @@ public class Owner {
 
     public void setNeighborhood(String neighborhood) {
         this.neighborhood = neighborhood;
-    }
-
-    public UserApp getUserApp() {
-        return userApp;
-    }
-
-    public void setUserApp(UserApp userApp) {
-        this.userApp = userApp;
     }
 
     public List<Pet> getPets() {

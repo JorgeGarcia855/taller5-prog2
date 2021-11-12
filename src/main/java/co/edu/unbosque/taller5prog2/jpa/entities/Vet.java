@@ -1,14 +1,21 @@
 package co.edu.unbosque.taller5prog2.jpa.entities;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "vet")
-public class Vet {
-    @Id
-    @Column(nullable = false)
-    private String username;
+@Table(name = "Vet")
+@PrimaryKeyJoinColumn
+@NamedQueries({
+        @NamedQuery(name = "Vet.update", query = "UPDATE Vet SET" +
+                " name = :name," +
+                " address = :address," +
+                " neighborhood = :neighborhood")
+})
+public class Vet extends UserApp {
 
     @Column(nullable = false)
     private String name;
@@ -19,22 +26,18 @@ public class Vet {
     @Column(nullable = false)
     private String neighborhood;
 
-    @OneToOne
-    @JoinColumn(name = "username") @MapsId
-    private UserApp userApp;
-
-    @OneToMany(mappedBy = "vet", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vet", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Visit> visits;
 
+    public Vet(String username, String password, String email, String name, String address, String neighborhood) {
+        super(username, password, email, "vet");
+        this.name = name;
+        this.address = address;
+        this.neighborhood = neighborhood;
+    }
+
     public Vet() {}
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getName() {
         return name;
@@ -58,14 +61,6 @@ public class Vet {
 
     public void setNeighborhood(String neighborhood) {
         this.neighborhood = neighborhood;
-    }
-
-    public UserApp getUserApp() {
-        return userApp;
-    }
-
-    public void setUserApp(UserApp userApp) {
-        this.userApp = userApp;
     }
 
     public List<Visit> getVisits() {

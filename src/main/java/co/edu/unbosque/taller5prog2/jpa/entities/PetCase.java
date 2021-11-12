@@ -1,9 +1,10 @@
 package co.edu.unbosque.taller5prog2.jpa.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "petCase")
+@Table(name = "PetCase")
 public class PetCase {
     @Id
     @GeneratedValue
@@ -13,6 +14,7 @@ public class PetCase {
     @Column(name = "created_at", nullable = false)
     private String createdAt;
 
+    @Pattern(regexp = "perdida|robo|fallecimiento", flags = Pattern.Flag.CASE_INSENSITIVE)
     @Column(nullable = false)
     private String type;
 

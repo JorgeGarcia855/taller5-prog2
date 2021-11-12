@@ -3,28 +3,22 @@ package co.edu.unbosque.taller5prog2.jpa.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "official")
-public class Official {
-    @Id
-    @Column(nullable = false)
-    private String username;
+@Table(name = "Official")
+@PrimaryKeyJoinColumn
+@NamedQueries({
+        @NamedQuery(name = "Official.updateName", query = "UPDATE Official SET name = :name")
+})
+public class Official extends UserApp {
 
     @Column(nullable = false)
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "username") @MapsId
-    private UserApp userApp;
+    public Official(String username, String password, String email, String name) {
+        super(username, password, email, "official");
+        this.name = name;
+    }
 
     public Official() {}
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getName() {
         return name;
@@ -32,13 +26,5 @@ public class Official {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public UserApp getUserApp() {
-        return userApp;
-    }
-
-    public void setUserApp(UserApp userApp) {
-        this.userApp = userApp;
     }
 }

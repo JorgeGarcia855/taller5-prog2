@@ -1,13 +1,18 @@
 package co.edu.unbosque.taller5prog2.jpa.entities;
 
-import io.smallrye.common.constraint.Nullable;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "userApp")
-public class UserApp {
+@Table(name = "UserApp")
+@Inheritance(strategy = InheritanceType.JOINED)
+@NamedQueries({
+        @NamedQuery(name = "UserApp.findAll", query = "SELECT user FROM UserApp user"),
+        @NamedQuery(name = "UserApp.findByRole", query = "SELECT user FROM UserApp user WHERE user.role = :role"),
+        @NamedQuery(name = "UserApp.updateUserEmail", query = "UPDATE UserApp SET email = :email")
+})
+public abstract class UserApp {
     @Id @Column(nullable = false)
     private String username;
 
@@ -17,19 +22,9 @@ public class UserApp {
     @Email @Column(nullable = false)
     private String email;
 
+    @Pattern(regexp = "owner|official|vet", flags = Pattern.Flag.CASE_INSENSITIVE)
     @Column(nullable = false)
     private String role;
-
-    @OneToOne(mappedBy = "userApp")
-    private Owner owner;
-
-    @OneToOne(mappedBy = "userApp")
-    private Official official;
-
-    @OneToOne(mappedBy = "userApp")
-    private Vet vet;
-
-    public UserApp() {}
 
     public UserApp(String username, String password, String email, String role) {
         this.username = username;
@@ -37,6 +32,8 @@ public class UserApp {
         this.email = email;
         this.role = role;
     }
+
+    public UserApp() {}
 
     public String getUsername() {
         return username;
@@ -70,27 +67,4 @@ public class UserApp {
         this.role = role;
     }
 
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public Official getOfficial() {
-        return official;
-    }
-
-    public void setOfficial(Official official) {
-        this.official = official;
-    }
-
-    public Vet getVet() {
-        return vet;
-    }
-
-    public void setVet(Vet vet) {
-        this.vet = vet;
-    }
 }

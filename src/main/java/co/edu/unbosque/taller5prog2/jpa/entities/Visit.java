@@ -3,7 +3,7 @@ package co.edu.unbosque.taller5prog2.jpa.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "visit")
+@Table(name = "Visit")
 public class Visit {
     @Id
     @GeneratedValue
