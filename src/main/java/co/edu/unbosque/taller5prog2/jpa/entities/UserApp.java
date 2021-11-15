@@ -9,21 +9,20 @@ import javax.validation.constraints.Pattern;
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries({
         @NamedQuery(name = "UserApp.findAll", query = "SELECT user FROM UserApp user"),
-        @NamedQuery(name = "UserApp.findByRole", query = "SELECT user FROM UserApp user WHERE user.role = :role"),
-        @NamedQuery(name = "UserApp.updateUserEmail", query = "UPDATE UserApp SET email = :email")
+        @NamedQuery(name = "UserApp.findByRole", query = "SELECT user FROM UserApp user WHERE user.role = :role")
 })
 public abstract class UserApp {
-    @Id @Column(nullable = false)
+    @Id @Column(nullable = false, updatable = false)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private String password;
 
     @Email @Column(nullable = false)
     private String email;
 
     @Pattern(regexp = "owner|official|vet", flags = Pattern.Flag.CASE_INSENSITIVE)
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private String role;
 
     public UserApp(String username, String password, String email, String role) {

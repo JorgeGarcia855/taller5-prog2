@@ -3,7 +3,6 @@ package co.edu.unbosque.taller5prog2.jpa.repositories;
 import co.edu.unbosque.taller5prog2.jpa.entities.Vet;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 import java.util.Optional;
 
 public class VetRepository implements GeneralRepository<Vet, String> {
@@ -27,12 +26,15 @@ public class VetRepository implements GeneralRepository<Vet, String> {
     }
 
     @Override
-    public Optional<Vet> update(Vet vet) {
-        vet = manager.createNamedQuery("Vet.update", Vet.class)
-                .setParameter("name", vet.getName())
-                .setParameter("address", vet.getAddress())
-                .setParameter("neighborhood", vet.getNeighborhood())
-                .getSingleResult();
-        return vet != null ? Optional.of(vet) : Optional.empty();
+    public Optional<Vet> update(Vet vet, String id) {
+        Vet updateVet = manager.find(Vet.class, id);
+        manager.getTransaction().begin();
+        updateVet.setEmail(vet.getEmail());
+        updateVet.setName(vet.getName());
+        updateVet.setAddress(vet.getAddress());
+        updateVet.setNeighborhood(vet.getNeighborhood());
+        manager.merge(updateVet);
+        manager.getTransaction().commit();
+        return Optional.of(updateVet);
     }
 }

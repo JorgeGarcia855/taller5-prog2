@@ -1,6 +1,6 @@
 package co.edu.unbosque.taller5prog2.resources.pojos;
 
-public class OwnerPOJO {
+public class UserAppPOJO {
     private String username;
     private String password;
     private String email;
@@ -9,20 +9,45 @@ public class OwnerPOJO {
     private String address;
     private String neighborhood;
 
-    public OwnerPOJO() {
-    }
+    public UserAppPOJO() {}
 
-    public OwnerPOJO(String username, String password, String email) {
+    // UserApp
+    public UserAppPOJO(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
     }
 
-    public OwnerPOJO(String username, String password, String email, Long personId, String name, String address, String neighborhood) {
+    // Official
+    public UserAppPOJO(String username, String password, String email, String name) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+    }
+
+    // Update Official
+    public UserAppPOJO(String email, String name) {
+        this.email = email;
+        this.name = name;
+    }
+
+    // Owner
+    public UserAppPOJO(String username, String password, String email, Long personId, String name, String address, String neighborhood) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.personId = personId;
+        this.name = name;
+        this.address = address;
+        this.neighborhood = neighborhood;
+    }
+
+    // Vet
+    public UserAppPOJO(String username, String password, String email, String name, String address, String neighborhood) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
         this.name = name;
         this.address = address;
         this.neighborhood = neighborhood;

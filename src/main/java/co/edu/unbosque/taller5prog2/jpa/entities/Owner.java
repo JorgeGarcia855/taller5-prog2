@@ -9,15 +9,9 @@ import java.util.List;
 @Entity
 @Table(name = "Owner")
 @PrimaryKeyJoinColumn
-@NamedQueries({
-        @NamedQuery(name = "Owner.update", query = "UPDATE Owner SET" +
-                " name = :name," +
-                " address = :address," +
-                " neighborhood = :neighborhood")
-})
 public class Owner extends UserApp {
 
-    @Column(name = "person_id", unique = true, nullable = false)
+    @Column(name = "person_id", unique = true, nullable = false, updatable = false)
     @GeneratedValue
     private Long personId;
 

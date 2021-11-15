@@ -39,10 +39,8 @@ public class UserAppRepository implements GeneralRepository<UserApp, String> {
     }
 
     @Override
-    public Optional<UserApp> update(UserApp userApp) {
-        userApp = manager.createNamedQuery("UserApp.updateUserEmail", UserApp.class)
-                .setParameter("email", userApp.getEmail())
-                .getSingleResult();
-        return userApp != null ? Optional.of(userApp) : Optional.empty();
+    public Optional<UserApp> update(UserApp userApp, String id) {
+
+        return Optional.empty();
     }
 }

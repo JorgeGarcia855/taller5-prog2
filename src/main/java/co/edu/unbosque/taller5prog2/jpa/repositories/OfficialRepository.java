@@ -3,7 +3,6 @@ package co.edu.unbosque.taller5prog2.jpa.repositories;
 import co.edu.unbosque.taller5prog2.jpa.entities.Official;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 import java.util.Optional;
 
 public class OfficialRepository implements GeneralRepository<Official, String> {
@@ -26,11 +25,15 @@ public class OfficialRepository implements GeneralRepository<Official, String> {
         return official != null ? Optional.of(official) : Optional.empty();
     }
 
+
     @Override
-    public Optional<Official> update(Official official) {
-        official = manager.createNamedQuery("Official.updateName", Official.class)
-                .setParameter("name", official.getName())
-                .getSingleResult();
-        return official != null ? Optional.of(official) : Optional.empty();
+    public Optional<Official> update(Official official, String id) {
+        Official updateOfficial = manager.find(Official.class, id);
+        manager.getTransaction().begin();
+        updateOfficial.setEmail(official.getEmail());
+        updateOfficial.setName(official.getName());
+        manager.merge(updateOfficial);
+        manager.getTransaction().commit();
+        return Optional.of(updateOfficial);
     }
 }

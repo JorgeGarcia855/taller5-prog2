@@ -1,10 +1,8 @@
 package co.edu.unbosque.taller5prog2.jpa.repositories;
 
 import co.edu.unbosque.taller5prog2.jpa.entities.Pet;
-import co.edu.unbosque.taller5prog2.jpa.entities.Vet;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 import java.util.Optional;
 
 public class PetRepository implements GeneralRepository<Pet, Integer> {
@@ -28,15 +26,22 @@ public class PetRepository implements GeneralRepository<Pet, Integer> {
     }
 
     @Override
-    public Optional<Pet> update(Pet pet) {
-        pet = manager.createNamedQuery("Pet.update", Pet.class)
-                .setParameter("name", pet.getName())
-                .setParameter("species", pet.getSpecies())
-                .setParameter("race", pet.getRace())
-                .setParameter("size", pet.getSize())
-                .setParameter("sex", pet.getSex())
-                .setParameter("picture", pet.getPicture())
-                .getSingleResult();
-        return pet != null ? Optional.of(pet) : Optional.empty();
+    public Optional<Pet> update(Pet pet, Integer id) {
+        Pet updatePet = manager.find(Pet.class, id);
+        manager.getTransaction().begin();
+        updatePet.setPetId(pet.getPetId());
+        updatePet.setMicrochip(pet.getMicrochip());
+        updatePet.setName(pet.getName());
+        updatePet.setSpecies(pet.getSpecies());
+        updatePet.setRace(pet.getRace());
+        updatePet.setSize(pet.getSize());
+        updatePet.setSex(pet.getSex());
+        updatePet.setPicture(pet.getPicture());
+        updatePet.setOwner(pet.getOwner());
+        manager.merge(updatePet);
+        manager.getTransaction().commit();
+        return Optional.of(updatePet);
     }
+
+
 }

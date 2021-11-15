@@ -1,55 +1,32 @@
-package co.edu.unbosque.taller5prog2.jpa.entities;
+package co.edu.unbosque.taller5prog2.resources.pojos;
 
-import co.edu.unbosque.taller5prog2.resources.pojos.UserAppPOJO;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
-@Table(name = "Pet")
-public class Pet {
-    @Id
-    @Column(name = "pet_id")
+public class PetPOJO {
     private Integer petId;
-
-    @Column(unique = true)
     private String microchip;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String species;
-
-    @Column(nullable = false)
     private String race;
-
-    @Column(nullable = false)
     private String size;
-
-    @Column(nullable = false)
     private String sex;
-
-    @Column
     private String picture;
+    private String ownerId;
 
-    @ManyToOne
-    @JoinColumn(name = "username")
-    private Owner owner;
 
-    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<PetCase> petCases;
+    public PetPOJO() {}
 
-    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Visit> visits;
+    public PetPOJO(Integer petId, String microchip, String name, String species, String race, String size, String sex, String picture, String ownerId) {
+        this.petId = petId;
+        this.microchip = microchip;
+        this.name = name;
+        this.species = species;
+        this.race = race;
+        this.size = size;
+        this.sex = sex;
+        this.picture = picture;
+        this.ownerId = ownerId;
+    }
 
-    public Pet() {}
-
-    public Pet(Integer petId, String microchip, String name, String species, String race, String size, String sex, String picture) {
+    public PetPOJO(Integer petId, String microchip, String name, String species, String race, String size, String sex, String picture) {
         this.petId = petId;
         this.microchip = microchip;
         this.name = name;
@@ -60,8 +37,7 @@ public class Pet {
         this.picture = picture;
     }
 
-    public Pet(Integer petId, String microchip, String name, String species, String race, String size, String sex, String picture, Owner owner) {
-        this.petId = petId;
+    public PetPOJO(String microchip, String name, String species, String race, String size, String sex, String picture) {
         this.microchip = microchip;
         this.name = name;
         this.species = species;
@@ -69,7 +45,15 @@ public class Pet {
         this.size = size;
         this.sex = sex;
         this.picture = picture;
-        this.owner = owner;
+    }
+
+    public PetPOJO(String name, String species, String race, String size, String sex, String picture) {
+        this.name = name;
+        this.species = species;
+        this.race = race;
+        this.size = size;
+        this.sex = sex;
+        this.picture = picture;
     }
 
     public Integer getPetId() {
@@ -136,27 +120,11 @@ public class Pet {
         this.picture = picture;
     }
 
-    public Owner getOwner() {
-        return owner;
+    public String getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public List<PetCase> getPetCases() {
-        return petCases;
-    }
-
-    public void setPetCases(List<PetCase> petCases) {
-        this.petCases = petCases;
-    }
-
-    public List<Visit> getVisits() {
-        return visits;
-    }
-
-    public void setVisits(List<Visit> visits) {
-        this.visits = visits;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 }

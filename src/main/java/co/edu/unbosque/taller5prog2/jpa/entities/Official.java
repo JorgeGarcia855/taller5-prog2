@@ -5,9 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Official")
 @PrimaryKeyJoinColumn
-@NamedQueries({
-        @NamedQuery(name = "Official.updateName", query = "UPDATE Official SET name = :name")
-})
 public class Official extends UserApp {
 
     @Column(nullable = false)

@@ -2,6 +2,8 @@ package co.edu.unbosque.taller5prog2.jpa.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "PetCase")
@@ -21,11 +23,18 @@ public class PetCase {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
     public PetCase() {}
+
+    public PetCase(Integer caseId, String type, String description) {
+        this.caseId = caseId;
+        this.createdAt = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        this.type = type;
+        this.description = description;
+    }
 
     public Integer getCaseId() {
         return caseId;

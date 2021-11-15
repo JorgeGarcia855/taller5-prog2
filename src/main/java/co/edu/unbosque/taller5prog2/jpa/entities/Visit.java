@@ -1,6 +1,10 @@
 package co.edu.unbosque.taller5prog2.jpa.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "Visit")
@@ -13,6 +17,7 @@ public class Visit {
     @Column(name = "created_at", nullable = false)
     private String createdAt;
 
+    @Pattern(regexp = "steri|mcImp|vacc|deworm|urg|ctrl", flags = Pattern.Flag.CASE_INSENSITIVE)
     @Column(nullable = false)
     private String type;
 
@@ -28,6 +33,13 @@ public class Visit {
     private Pet pet;
 
     public Visit() {}
+
+    public Visit(Integer visitId, String type, String description) {
+        this.visitId = visitId;
+        this.createdAt = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        this.type = type;
+        this.description = description;
+    }
 
     public Integer getVisitId() {
         return visitId;

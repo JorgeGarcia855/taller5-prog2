@@ -9,12 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "Vet")
 @PrimaryKeyJoinColumn
-@NamedQueries({
-        @NamedQuery(name = "Vet.update", query = "UPDATE Vet SET" +
-                " name = :name," +
-                " address = :address," +
-                " neighborhood = :neighborhood")
-})
 public class Vet extends UserApp {
 
     @Column(nullable = false)
