@@ -5,8 +5,17 @@ public class PetCasePOJO {
     private String createdAt;
     private String type;
     private String description;
+    private Integer petId;
 
     public PetCasePOJO() {}
+
+    public PetCasePOJO(Integer caseId, String createdAt, String type, String description, Integer petId) {
+        this.caseId = caseId;
+        this.createdAt = createdAt;
+        this.type = type;
+        this.description = description;
+        this.petId = petId;
+    }
 
     public PetCasePOJO(Integer caseId, String createdAt, String type, String description) {
         this.caseId = caseId;
@@ -51,5 +60,13 @@ public class PetCasePOJO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getPetId() {
+        return petId;
+    }
+
+    public void setPetId(Integer petId) {
+        this.petId = petId;
     }
 }

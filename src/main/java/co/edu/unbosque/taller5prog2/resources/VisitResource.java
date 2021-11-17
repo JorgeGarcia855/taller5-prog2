@@ -6,21 +6,18 @@ import co.edu.unbosque.taller5prog2.services.VetService;
 import co.edu.unbosque.taller5prog2.services.VisitService;
 
 import javax.ejb.Stateless;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Optional;
 
-@Path("/visits")
+@Path("/vets/{vetId}/pets/{petId}/visits")
 public class VisitResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create(VisitPOJO visit) {
-        Optional<VisitPOJO> persitedVisit = new VisitService().createVisit(visit);
+    public Response create(VisitPOJO visit, @PathParam("vetId") String vetId, @PathParam("petId") Integer petId) {
+        Optional<VisitPOJO> persitedVisit = Optional.ofNullable(new VisitService().createVisit(visit, vetId, petId));
         return persitedVisit.isPresent() ?
                 Response.status(Response.Status.ACCEPTED)
                         .entity(persitedVisit.get())

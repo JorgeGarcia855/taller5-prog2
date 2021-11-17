@@ -5,6 +5,10 @@ import co.edu.unbosque.taller5prog2.jpa.entities.Pet;
 import javax.persistence.EntityManager;
 import java.util.Optional;
 
+/**
+ * El repositorio de la entidad Pet, que implementa los
+ * metodos de la interfaz GeneralRepository
+ */
 public class PetRepository implements GeneralRepository<Pet, Integer> {
     private final EntityManager manager;
 
@@ -29,7 +33,6 @@ public class PetRepository implements GeneralRepository<Pet, Integer> {
     public Optional<Pet> update(Pet pet, Integer id) {
         Pet updatePet = manager.find(Pet.class, id);
         manager.getTransaction().begin();
-        updatePet.setPetId(pet.getPetId());
         updatePet.setMicrochip(pet.getMicrochip());
         updatePet.setName(pet.getName());
         updatePet.setSpecies(pet.getSpecies());

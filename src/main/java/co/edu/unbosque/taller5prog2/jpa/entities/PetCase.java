@@ -5,6 +5,10 @@ import javax.validation.constraints.Pattern;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * Esta es la entidad del la tabla PetCase, que tiene una
+ * relacion muchos a uno con la entidad Pet
+ */
 @Entity
 @Table(name = "PetCase")
 public class PetCase {

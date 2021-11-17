@@ -4,6 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
+/**
+ * Esta es la entidad del la tabla UserApp. Es la clase padre
+ * de las entidades Official, Owner y Vet
+ */
+
 @Entity
 @Table(name = "UserApp")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,6 +34,11 @@ public abstract class UserApp {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.role = role;
+    }
+
+    public UserApp(String username, String role) {
+        this.username = username;
         this.role = role;
     }
 
@@ -66,4 +76,5 @@ public abstract class UserApp {
         this.role = role;
     }
 
+    public abstract void addPet(Pet pet);
 }

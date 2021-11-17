@@ -5,6 +5,10 @@ import co.edu.unbosque.taller5prog2.jpa.entities.Official;
 import javax.persistence.EntityManager;
 import java.util.Optional;
 
+/**
+ * El repositorio de la entidad Official, que implementa los
+ * metodos de la interfaz GeneralRepository
+ */
 public class OfficialRepository implements GeneralRepository<Official, String> {
     private final EntityManager manager;
 

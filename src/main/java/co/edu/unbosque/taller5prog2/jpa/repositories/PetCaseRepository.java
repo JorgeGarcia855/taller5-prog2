@@ -5,6 +5,10 @@ import co.edu.unbosque.taller5prog2.jpa.entities.PetCase;
 import javax.persistence.EntityManager;
 import java.util.Optional;
 
+/**
+ * El repositorio de la entidad PetCase, que implementa los
+ * metodos de la interfaz GeneralRepository
+ */
 public class PetCaseRepository implements GeneralRepository<PetCase, Integer> {
     private final EntityManager manager;
 

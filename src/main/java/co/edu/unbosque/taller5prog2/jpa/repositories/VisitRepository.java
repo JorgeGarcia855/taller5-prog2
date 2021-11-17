@@ -5,6 +5,10 @@ import co.edu.unbosque.taller5prog2.jpa.entities.Visit;
 import javax.persistence.EntityManager;
 import java.util.Optional;
 
+/**
+ * El repositorio de la entidad Visit, que implementa los
+ * metodos de la interfaz GeneralRepository
+ */
 public class VisitRepository implements GeneralRepository<Visit, Integer> {
     private final EntityManager manager;
 

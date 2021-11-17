@@ -1,11 +1,14 @@
 package co.edu.unbosque.taller5prog2.jpa.repositories;
 
 import co.edu.unbosque.taller5prog2.jpa.entities.Owner;
-import co.edu.unbosque.taller5prog2.jpa.entities.UserApp;
 
 import javax.persistence.EntityManager;
 import java.util.Optional;
 
+/**
+ * El repositorio de la entidad Owner, que implementa los
+ * metodos de la interfaz GeneralRepository
+ */
 public class OwnerRepository implements GeneralRepository<Owner, String> {
     private final EntityManager manager;
 

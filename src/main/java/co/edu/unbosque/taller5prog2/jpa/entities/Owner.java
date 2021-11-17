@@ -6,6 +6,9 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Esta es la entidad del la tabla Owner, que extiende de la entidad UserApp
+ */
 @Entity
 @Table(name = "Owner")
 @PrimaryKeyJoinColumn
@@ -36,7 +39,19 @@ public class Owner extends UserApp {
         this.neighborhood = neighborhood;
     }
 
+    public Owner(String username, Long personId) {
+        super(username, "owner");
+        this.personId = personId;
+    }
+
     public Owner() {}
+
+    @Override
+    public void addPet(Pet pet) {
+        pets.add(pet);
+        pet.setOwner(this);
+    }
+
 
     public Long getPersonId() {
         return personId;
@@ -77,4 +92,5 @@ public class Owner extends UserApp {
     public void setPets(List<Pet> pets) {
         this.pets = pets;
     }
+
 }

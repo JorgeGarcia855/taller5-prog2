@@ -1,12 +1,27 @@
 package co.edu.unbosque.taller5prog2.resources.pojos;
 
+import co.edu.unbosque.taller5prog2.jpa.entities.Pet;
+
 public class VisitPOJO {
     private Integer visitId;
     private String createdAt;
     private String type;
     private String description;
+    private String vetId;
+    private Integer petId;
+    private Pet pet;
+
 
     public VisitPOJO() {}
+
+    public VisitPOJO(Integer visitId, String createdAt, String type, String description, String vetId, Integer petId) {
+        this.visitId = visitId;
+        this.createdAt = createdAt;
+        this.type = type;
+        this.description = description;
+        this.vetId = vetId;
+        this.petId = petId;
+    }
 
     public VisitPOJO(Integer visitId, String type, String description) {
         this.visitId = visitId;
@@ -44,5 +59,29 @@ public class VisitPOJO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getVetId() {
+        return vetId;
+    }
+
+    public void setVetId(String vetId) {
+        this.vetId = vetId;
+    }
+
+    public Integer getPetId() {
+        return petId;
+    }
+
+    public void setPetId(Integer petId) {
+        this.petId = petId;
+    }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 }

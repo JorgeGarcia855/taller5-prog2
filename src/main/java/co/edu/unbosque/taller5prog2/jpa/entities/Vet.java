@@ -6,6 +6,9 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Esta es la entidad del la tabla Vet, que extiende de la entidad UserApp
+ */
 @Entity
 @Table(name = "Vet")
 @PrimaryKeyJoinColumn
@@ -32,6 +35,11 @@ public class Vet extends UserApp {
     }
 
     public Vet() {}
+
+    @Override
+    public void addPet(Pet pet) {
+
+    }
 
     public String getName() {
         return name;

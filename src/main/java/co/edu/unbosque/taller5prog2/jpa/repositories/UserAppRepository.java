@@ -6,6 +6,10 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * El repositorio de la entidad UserApp, que implementa los
+ * metodos de la interfaz GeneralRepository
+ */
 public class UserAppRepository implements GeneralRepository<UserApp, String> {
     private final EntityManager manager;
 

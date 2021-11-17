@@ -4,7 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+
+/**
+ * Esta es la entidad del la tabla Visit. Contiene Relaciones
+ * con las entidades Vet y Pet
+ */
 
 @Entity
 @Table(name = "Visit")
@@ -25,7 +29,7 @@ public class Visit {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "vet_id", referencedColumnName = "username", unique = true)
     private Vet vet;
 
     @ManyToOne
@@ -39,6 +43,15 @@ public class Visit {
         this.createdAt = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
         this.type = type;
         this.description = description;
+    }
+
+    public Visit(Integer visitId, String type, String description, Vet vet, Pet pet) {
+        this.visitId = visitId;
+        this.createdAt = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        this.type = type;
+        this.description = description;
+        this.vet = vet;
+        this.pet = pet;
     }
 
     public Integer getVisitId() {

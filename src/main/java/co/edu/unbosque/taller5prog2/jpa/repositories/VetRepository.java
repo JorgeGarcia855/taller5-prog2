@@ -5,6 +5,10 @@ import co.edu.unbosque.taller5prog2.jpa.entities.Vet;
 import javax.persistence.EntityManager;
 import java.util.Optional;
 
+/**
+ * El repositorio de la entidad Vet, que implementa los
+ * metodos de la interfaz GeneralRepository
+ */
 public class VetRepository implements GeneralRepository<Vet, String> {
     private final EntityManager manager;
 

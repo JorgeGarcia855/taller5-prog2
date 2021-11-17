@@ -2,6 +2,9 @@ package co.edu.unbosque.taller5prog2.jpa.entities;
 
 import javax.persistence.*;
 
+/**
+ * Esta es la entidad del la tabla Official, que extiende de la entidad UserApp
+ */
 @Entity
 @Table(name = "Official")
 @PrimaryKeyJoinColumn
@@ -16,6 +19,12 @@ public class Official extends UserApp {
     }
 
     public Official() {}
+
+    @Override
+    public void addPet(Pet pet) {
+
+    }
+
 
     public String getName() {
         return name;

@@ -7,6 +7,10 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Esta es la entidad del la tabla Pet. Contiene
+ * relaciones con las entidades Owner, PetCase y Visits
+ */
 @Entity
 @Table(name = "Pet")
 public class Pet {
@@ -36,7 +40,7 @@ public class Pet {
     private String picture;
 
     @ManyToOne
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "owner_id", referencedColumnName = "username", unique = true)
     private Owner owner;
 
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
@@ -158,5 +162,10 @@ public class Pet {
 
     public void setVisits(List<Visit> visits) {
         this.visits = visits;
+    }
+
+    public void addPetCase(PetCase petcase) {
+        petCases.add(petcase);
+        petcase.setPet(this);
     }
 }
