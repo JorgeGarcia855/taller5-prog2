@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "530a467a-6b43-4789-9f0c-16ee95068d56",
+		"name": "Taller5-Prog2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Official",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"official123\",\r\n    \"password\": \"contra123\",\r\n    \"email\": \"official123@gmail.com\",\r\n    \"name\": \"Official 123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-prog2-1.0-SNAPSHOT/api/officials",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-prog2-1.0-SNAPSHOT",
+						"api",
+						"officials"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Owner",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"owner123\",\r\n    \"password\": \"ownerpass123\",\r\n    \"email\": \"ownwer123@gmail.com\",\r\n    \"personId\": 12345,\r\n    \"name\": \"Owner 123\",\r\n    \"address\": \"Direccion123\",\r\n    \"neighborhood\": \"Calle123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-prog2-1.0-SNAPSHOT/api/owners",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-prog2-1.0-SNAPSHOT",
+						"api",
+						"owners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Vet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"vet123\",\r\n    \"password\": \"vetpass123\",\r\n    \"email\": \"vet123@gmail.com\",\r\n    \"name\": \"Vet 123\",\r\n    \"address\": \"Vet direccion\",\r\n    \"neighborhood\": \"Vet neighbor\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-prog2-1.0-SNAPSHOT/api/vets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-prog2-1.0-SNAPSHOT",
+						"api",
+						"vets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Owner",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"owner123mod@gmail.com\",\r\n    \"name\": \"Owner 123 mod\",\r\n    \"address\": \"mod address owner\",\r\n    \"neighborhood\": \"mod neighborhood owner\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-prog2-1.0-SNAPSHOT/api/owners/owner123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-prog2-1.0-SNAPSHOT",
+						"api",
+						"owners",
+						"owner123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Official",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"official1mod@gmail.com\",\r\n    \"name\": \"luis miguel mod\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-prog2-1.0-SNAPSHOT/api/officials/official1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-prog2-1.0-SNAPSHOT",
+						"api",
+						"officials",
+						"official1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Vet",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"modvet123@hotmail.com\",\r\n    \"name\": \"vetmod123\",\r\n    \"address\": \"Calle mod1233\",\r\n    \"neighborhood\": \"lugar 3333\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-prog2-1.0-SNAPSHOT/api/vets/vet3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-prog2-1.0-SNAPSHOT",
+						"api",
+						"vets",
+						"vet3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Pet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"petId\": 654321,\r\n    \"microchip\": \"02abc345ccc\",\r\n    \"name\": \"Mascota\",\r\n    \"species\": \"felino\",\r\n    \"race\": \"raza gatuna\",\r\n    \"size\": \"XL\",\r\n    \"sex\": \"femenino\",\r\n    \"picture\": \"foto_gato.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-prog2-1.0-SNAPSHOT/api/owners/owner123/pets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-prog2-1.0-SNAPSHOT",
+						"api",
+						"owners",
+						"owner123",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Pet",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"microchip\": \"mmm123mm454\",\r\n    \"name\": \"Mascota mod\",\r\n    \"species\": \"canino\",\r\n    \"race\": \"raza canina\",\r\n    \"size\": \"M\",\r\n    \"sex\": \"masculino\",\r\n    \"picture\": \"foto_mod.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-prog2-1.0-SNAPSHOT/api/owners/owner1/pets/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-prog2-1.0-SNAPSHOT",
+						"api",
+						"owners",
+						"owner1",
+						"pets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create PetCase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"caseId\":23,\r\n    \"type\": \"perdida\",\r\n    \"description\": \"decpriad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-prog2-1.0-SNAPSHOT/api/owners/owner1/pets/1/petcases",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-prog2-1.0-SNAPSHOT",
+						"api",
+						"owners",
+						"owner1",
+						"pets",
+						"1",
+						"petcases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Visit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"vacc\",\r\n    \"description\": \"ds3wfffrw3dsdsd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/taller5-2-1.0-SNAPSHOT/api/visits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"taller5-2-1.0-SNAPSHOT",
+						"api",
+						"visits"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
