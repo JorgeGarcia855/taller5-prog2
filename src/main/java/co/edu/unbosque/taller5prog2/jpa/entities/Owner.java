@@ -52,6 +52,11 @@ public class Owner extends UserApp {
         pet.setOwner(this);
     }
 
+    @Override
+    public void addVisit(Visit visit) {
+
+    }
+
 
     public Long getPersonId() {
         return personId;

@@ -77,4 +77,6 @@ public abstract class UserApp {
     }
 
     public abstract void addPet(Pet pet);
+
+    public abstract void addVisit(Visit visit);
 }

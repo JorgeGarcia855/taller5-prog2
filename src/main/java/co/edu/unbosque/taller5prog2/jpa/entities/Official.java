@@ -25,6 +25,11 @@ public class Official extends UserApp {
 
     }
 
+    @Override
+    public void addVisit(Visit visit) {
+
+    }
+
 
     public String getName() {
         return name;

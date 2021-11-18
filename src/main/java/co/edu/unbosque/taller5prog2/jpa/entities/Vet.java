@@ -41,6 +41,12 @@ public class Vet extends UserApp {
 
     }
 
+    @Override
+    public void addVisit(Visit visit) {
+        visits.add(visit);
+        visit.setVet(this);
+    }
+
     public String getName() {
         return name;
     }

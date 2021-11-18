@@ -7,20 +7,20 @@ public class VisitPOJO {
     private String createdAt;
     private String type;
     private String description;
-    private String vetId;
-    private Integer petId;
+    private String vet_id;
+    private Integer pet_id;
     private Pet pet;
 
 
     public VisitPOJO() {}
 
-    public VisitPOJO(Integer visitId, String createdAt, String type, String description, String vetId, Integer petId) {
+    public VisitPOJO(Integer visitId, String createdAt, String type, String description, String vet_id, Integer pet_id) {
         this.visitId = visitId;
         this.createdAt = createdAt;
         this.type = type;
         this.description = description;
-        this.vetId = vetId;
-        this.petId = petId;
+        this.vet_id = vet_id;
+        this.pet_id = pet_id;
     }
 
     public VisitPOJO(Integer visitId, String type, String description) {
@@ -61,20 +61,20 @@ public class VisitPOJO {
         this.description = description;
     }
 
-    public String getVetId() {
-        return vetId;
+    public String getVet_id() {
+        return vet_id;
     }
 
-    public void setVetId(String vetId) {
-        this.vetId = vetId;
+    public void setVet_id(String vet_id) {
+        this.vet_id = vet_id;
     }
 
-    public Integer getPetId() {
-        return petId;
+    public Integer getPet_id() {
+        return pet_id;
     }
 
-    public void setPetId(Integer petId) {
-        this.petId = petId;
+    public void setPet_id(Integer pet_id) {
+        this.pet_id = pet_id;
     }
 
     public Pet getPet() {

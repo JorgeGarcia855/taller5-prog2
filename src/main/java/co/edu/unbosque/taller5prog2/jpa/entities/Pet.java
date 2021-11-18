@@ -168,4 +168,9 @@ public class Pet {
         petCases.add(petcase);
         petcase.setPet(this);
     }
+
+    public void addVisit(Visit visit) {
+        visits.add(visit);
+        visit.setPet(this);
+    }
 }
